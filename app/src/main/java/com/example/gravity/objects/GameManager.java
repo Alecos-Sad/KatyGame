@@ -2,6 +2,7 @@ package com.example.gravity.objects;
 
 import com.example.gravity.generator.GeneratorBackground;
 import com.example.gravity.generator.GeneratorEnemy;
+import com.example.gravity.utilits.UtilResourse;
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.GraphicsFW;
 import com.example.my_framework.utilits.CollisionDetect;
@@ -57,12 +58,11 @@ public class GameManager {
     private void checkHit() {
         for (int i = 0; i < generatorEnemy.enemyArrayList.size(); i++) {
             if (CollisionDetect.collisionDetect(mainPlayer, generatorEnemy.enemyArrayList.get(i))) {
+                UtilResourse.hit.play(1);
                 mainPlayer.hitEnemy();
                 generatorEnemy.hitPlayer(generatorEnemy.enemyArrayList.get(i));
             }
         }
-
-
     }
 
     public void drawing(CoreFW coreFW, GraphicsFW graphicsFW) {

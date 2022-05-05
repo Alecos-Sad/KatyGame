@@ -137,6 +137,7 @@ public class MainPlayer extends ObjectFW {
     public void hitEnemy() {
         shieldsPlayer--;
         if (shieldsPlayer < 0) {
+            UtilResourse.explode.play(1);
             isGameOver = true;
             timerOnGameOver.startTimer();
         }

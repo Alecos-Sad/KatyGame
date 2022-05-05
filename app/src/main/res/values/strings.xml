@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Gravity</string>
+
+    <!--MainMenuScene-->
+    <string name="txt_mainMenu_nameGame">Игра Садовниковой Кати</string>
+    <string name="txt_mainMenu_newGame">Новая игра</string>
+    <string name="txt_mainMenu_setting">Настройки</string>
+    <string name="txt_mainMenu_results">Результаты</string>
+    <string name="txt_mainMenu_exitGame">Выход из игры</string>
+
+
+    <!--GameScene-->
+    <string name="txt_gameScene_stateReady_ready">Катя ты готова?</string>
+    <string name="txt_gameScene_stateGameOver_gameOver">Катя! Ты проиграла :(</string>
+    <string name="txt_gameScene_stateGameOver_restart">Начать заново</string>
+    <string name="txt_gameScene_stateGameOver_exit">Выйти</string>
+    <string name="txt_gameScene_stateGameOver_distance">Пройдено пути</string>
+
+
+    <string name="txt_top_distance">Лучшие результаты</string>
+
+    <!--HUD-->
+    <string name="txt_hud_passedDistance">Пройдено</string>
+    <string name="txt_hud_currentSpeedPlayer">Скорость</string>
+    <string name="txt_hud_currentShieldsPlayer">Защита</string>
+
+
+</resources>

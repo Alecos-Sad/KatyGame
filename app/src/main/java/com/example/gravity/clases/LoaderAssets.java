@@ -14,6 +14,30 @@ public class LoaderAssets {
         loadSpriteEnemy(graphicsFW);
         loadOther(graphicsFW);
         loadAudio(coreFW);
+        loadSpritePlayerShieldsOn(graphicsFW);
+        loadGifts(graphicsFW);
+    }
+
+    private void loadGifts(GraphicsFW graphicsFW) {
+        UtilResourse.spriteProtector = new ArrayList<>();
+        UtilResourse.spriteProtector.add(graphicsFW.newSprite(UtilResourse.textureAtlas, 256, 192, 32, 32));
+        UtilResourse.spriteProtector.add(graphicsFW.newSprite(UtilResourse.textureAtlas, 288, 192, 32, 32));
+        UtilResourse.spriteProtector.add(graphicsFW.newSprite(UtilResourse.textureAtlas, 320, 192, 32, 32));
+        UtilResourse.spriteProtector.add(graphicsFW.newSprite(UtilResourse.textureAtlas, 352, 192, 32, 32));
+    }
+
+    private void loadSpritePlayerShieldsOn(GraphicsFW graphicsFW) {
+        UtilResourse.spritePlayerShieldsOn = new ArrayList<>();
+        UtilResourse.spritePlayerShieldsOnBoost = new ArrayList<>();
+        UtilResourse.spritePlayerShieldsOn.add(graphicsFW.newSprite(UtilResourse.textureAtlas, 0, 128, 64, 64));
+        UtilResourse.spritePlayerShieldsOn.add(graphicsFW.newSprite(UtilResourse.textureAtlas, 64, 128, 64, 64));
+        UtilResourse.spritePlayerShieldsOn.add(graphicsFW.newSprite(UtilResourse.textureAtlas, 128, 128, 64, 64));
+        UtilResourse.spritePlayerShieldsOn.add(graphicsFW.newSprite(UtilResourse.textureAtlas, 192, 128, 64, 64));
+
+        UtilResourse.spritePlayerShieldsOnBoost.add(graphicsFW.newSprite(UtilResourse.textureAtlas, 0, 192, 64, 64));
+        UtilResourse.spritePlayerShieldsOnBoost.add(graphicsFW.newSprite(UtilResourse.textureAtlas, 64, 192, 64, 64));
+        UtilResourse.spritePlayerShieldsOnBoost.add(graphicsFW.newSprite(UtilResourse.textureAtlas, 128, 192, 64, 64));
+        UtilResourse.spritePlayerShieldsOnBoost.add(graphicsFW.newSprite(UtilResourse.textureAtlas, 192, 192, 64, 64));
     }
 
     private void loadAudio(CoreFW coreFW) {

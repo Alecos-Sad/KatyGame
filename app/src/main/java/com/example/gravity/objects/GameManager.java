@@ -2,12 +2,16 @@ package com.example.gravity.objects;
 
 import com.example.gravity.generator.GeneratorBackground;
 import com.example.gravity.generator.GeneratorEnemy;
+import com.example.gravity.generator.GeneratorGifs;
 import com.example.gravity.utilits.UtilResourse;
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.GraphicsFW;
 import com.example.my_framework.utilits.CollisionDetect;
 
 public class GameManager {
+
+    public final static double SPEED_ANIMATION = 3;
+
     private int maxScreenY;
     private int maxScreenX;
     private int minScreenY;
@@ -26,7 +30,9 @@ public class GameManager {
     MainPlayer mainPlayer;
     GeneratorBackground generatorBackground;
     GeneratorEnemy generatorEnemy;
+    GeneratorGifs generatorGifs;
     HUD hud;
+
 
     public GameManager(CoreFW coreFW, int sceneWidth, int sceneHeight) {
         hud = new HUD(coreFW);
@@ -36,6 +42,7 @@ public class GameManager {
         minScreenX = 0;
         mainPlayer = new MainPlayer(coreFW, maxScreenX, maxScreenY, minScreenY);
         generatorBackground = new GeneratorBackground(sceneWidth, sceneHeight, minScreenY);
+        generatorGifs = new GeneratorGifs(sceneWidth, sceneHeight, minScreenY);
         generatorEnemy = new GeneratorEnemy(sceneWidth, sceneHeight, minScreenY);
         gameOver = false;
     }
@@ -44,6 +51,7 @@ public class GameManager {
         generatorBackground.update(mainPlayer.getSpeedPlayer());
         mainPlayer.update();
         generatorEnemy.update(mainPlayer.getSpeedPlayer());
+        generatorGifs.update(mainPlayer.getSpeedPlayer());
 
         passedDistance += mainPlayer.getSpeedPlayer();
         currentSpeedPlayer = (int) mainPlayer.getSpeedPlayer() * 60;
@@ -63,11 +71,20 @@ public class GameManager {
                 generatorEnemy.hitPlayer(generatorEnemy.enemyArrayList.get(i));
             }
         }
+        if (CollisionDetect.collisionDetect(mainPlayer,generatorGifs.getProtector())){
+            hitPlayerWithProtector();
+        }
+    }
+
+    private void hitPlayerWithProtector() {
+        mainPlayer.hitProtector();
+        generatorGifs.hitProtectorWithPlayers();
     }
 
     public void drawing(CoreFW coreFW, GraphicsFW graphicsFW) {
         mainPlayer.drawing(graphicsFW);
         generatorBackground.drawing(graphicsFW);
+        generatorGifs.drawing(graphicsFW);
         generatorEnemy.drawing(graphicsFW);
         hud.drawing(graphicsFW);
     }

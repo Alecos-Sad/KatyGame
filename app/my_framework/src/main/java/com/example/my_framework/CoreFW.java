@@ -12,25 +12,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CoreFW extends AppCompatActivity {
 
-    private final float FRAME_BUFFER_WIDTH = 800;
-    private final float FRAME_BUFFER_HEIGHT = 600;
-
     private LoopFW loopFW;
     private GraphicsFW graphicsFW;
-    private TouchLictenerFW touchLictenerFW;
+    private TouchListenerFW touchListenerFW;
 
     private AudioFW audioFW;
-    private Display display;
-    private Point sizeDisplay;
-    private Bitmap frameBuffer;
     private SceneFW sceneFW;
-    private float sceneWidth;
-    private float sceneHeight;
 
     private boolean stateOnPause;
-    private boolean stateOnResume;
     private SharedPreferences sharedPreferences;
-    private final String SETTINGS = "settings";
 
     public SharedPreferences getSharedPreferences() {
         return sharedPreferences;
@@ -39,26 +29,29 @@ public class CoreFW extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String SETTINGS = "settings";
         sharedPreferences = getSharedPreferences(SETTINGS,MODE_PRIVATE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        sizeDisplay = new Point();
-        display = getWindowManager().getDefaultDisplay();
+        Point sizeDisplay = new Point();
+        Display display = getWindowManager().getDefaultDisplay();
         display.getSize(sizeDisplay);
 
-        frameBuffer = Bitmap.createBitmap((int) FRAME_BUFFER_WIDTH, (int) FRAME_BUFFER_HEIGHT, Bitmap.Config.ARGB_8888);
-        sceneWidth = FRAME_BUFFER_WIDTH / sizeDisplay.x;
-        sceneHeight = FRAME_BUFFER_HEIGHT / sizeDisplay.y;
+        float FRAME_BUFFER_HEIGHT = 600;
+        float FRAME_BUFFER_WIDTH = 800;
+        Bitmap frameBuffer = Bitmap.createBitmap((int) FRAME_BUFFER_WIDTH, (int) FRAME_BUFFER_HEIGHT, Bitmap.Config.ARGB_8888);
+        float sceneWidth = FRAME_BUFFER_WIDTH / sizeDisplay.x;
+        float sceneHeight = FRAME_BUFFER_HEIGHT / sizeDisplay.y;
 
         audioFW = new AudioFW(this);
 
         loopFW = new LoopFW(this, frameBuffer);
         graphicsFW = new GraphicsFW(getAssets(), frameBuffer);
-        touchLictenerFW = new TouchLictenerFW(loopFW, sceneWidth, sceneHeight);
+        touchListenerFW = new TouchListenerFW(loopFW, sceneWidth, sceneHeight);
 
         sceneFW = getStartScene();
         stateOnPause = false;
-        stateOnResume = false;
+        boolean stateOnResume = false;
         setContentView(loopFW);
 
     }
@@ -90,8 +83,8 @@ public class CoreFW extends AppCompatActivity {
     public GraphicsFW getGraphicsFW() {
         return graphicsFW;
     }
-    public TouchLictenerFW getTouchLictenerFW(){
-        return touchLictenerFW;
+    public TouchListenerFW getTouchListenerFW(){
+        return touchListenerFW;
 
     }
 

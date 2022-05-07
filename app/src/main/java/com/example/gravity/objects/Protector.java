@@ -10,25 +10,25 @@ import com.example.my_framework.utilits.UtilRandomFW;
 
 public class Protector extends ObjectFW {
 
-    AnimationFW animProtector;
+    private AnimationFW mAnimProtector;
 
     public Protector(int maxScreenX, int maxScreenY, int minScreenY) {
 
         this.maxScreenX = maxScreenX;
-        this.maxScreenY = maxScreenY - UtilResourse.spriteProtector.get(0).getHeight();
+        this.maxScreenY = maxScreenY - UtilResourse.sSpriteProtector.get(0).getHeight();
         this.minScreenY = minScreenY;
         this.minScreenX = 0;
         x = maxScreenX;
         y = UtilRandomFW.getGap(minScreenY, maxScreenY);
-        radius = UtilResourse.spriteProtector.get(0).getWidth() / 2;
+        radius = UtilResourse.sSpriteProtector.get(0).getWidth() / 2;
         hitBox = new Rect(x, y,
-                UtilResourse.spriteProtector.get(0).getWidth(),
-                UtilResourse.spriteProtector.get(0).getHeight());
-        animProtector = new AnimationFW(GameManager.SPEED_ANIMATION,
-                UtilResourse.spriteProtector.get(0),
-                UtilResourse.spriteProtector.get(1),
-                UtilResourse.spriteProtector.get(2),
-                UtilResourse.spriteProtector.get(3));
+                UtilResourse.sSpriteProtector.get(0).getWidth(),
+                UtilResourse.sSpriteProtector.get(0).getHeight());
+        mAnimProtector = new AnimationFW(GameManager.SPEED_ANIMATION,
+                UtilResourse.sSpriteProtector.get(0),
+                UtilResourse.sSpriteProtector.get(1),
+                UtilResourse.sSpriteProtector.get(2),
+                UtilResourse.sSpriteProtector.get(3));
     }
 
     public void update(double speedPlayer) {
@@ -39,14 +39,14 @@ public class Protector extends ObjectFW {
         if (x < minScreenX) {
             y = UtilRandomFW.getGap(minScreenY, maxScreenY);
         }
-        animProtector.runAnimation();
+        mAnimProtector.runAnimation();
 
         hitBox = new Rect(x, y,
-                UtilResourse.spriteEnemy.get(0).getWidth(),
-                UtilResourse.spriteEnemy.get(0).getHeight());
+                UtilResourse.sSpriteEnemy.get(0).getWidth(),
+                UtilResourse.sSpriteEnemy.get(0).getHeight());
     }
 
     public void drawing(GraphicsFW graphicsFW) {
-        animProtector.drawingAnimation(graphicsFW, x, y);
+        mAnimProtector.drawingAnimation(graphicsFW, x, y);
     }
 }

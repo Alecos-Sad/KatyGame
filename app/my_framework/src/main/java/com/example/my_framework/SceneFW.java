@@ -2,10 +2,10 @@ package com.example.my_framework;
 
 public abstract class SceneFW {
 
-    public CoreFW coreFW;
-    public int sceneWidth;
-    public int sceneHeight;
-    public GraphicsFW graphicsFW;
+    public final CoreFW coreFW;
+    public final int sceneWidth;
+    public final int sceneHeight;
+    public final GraphicsFW graphicsFW;
 
     public SceneFW(CoreFW coreFW) {
         this.coreFW = coreFW;

@@ -9,18 +9,18 @@ import java.util.ArrayList;
 
 public class UtilResourse {
 
-    public static Bitmap textureAtlas;
-    public static ArrayList<Bitmap> spritePlayer;
-    public static ArrayList<Bitmap> spritePlayerBoost;
-    public static ArrayList<Bitmap> spriteEnemy;
-    public static ArrayList<Bitmap> spritePlayerShieldsOn;
-    public static ArrayList<Bitmap> spritePlayerShieldsOnBoost;
-    public static ArrayList<Bitmap> spriteProtector;
-    public static Bitmap shieldHitEnemy;
-    public static ArrayList<Bitmap> spriteExplosinPlayer;
-    public static MusicFW gameMusic;
-    public static SoundFW hit;
-    public static SoundFW explode;
-    public static SoundFW touch;
+    public static Bitmap sTextureAtlas;
+    public static ArrayList<Bitmap> sSpritePlayer;
+    public static ArrayList<Bitmap> sSpritePlayerBoost;
+    public static ArrayList<Bitmap> sSpriteEnemy;
+    public static ArrayList<Bitmap> sSpritePlayerShieldsOn;
+    public static ArrayList<Bitmap> sSpritePlayerShieldsOnBoost;
+    public static ArrayList<Bitmap> sSpriteProtector;
+    public static Bitmap sShieldHitEnemy;
+    public static ArrayList<Bitmap> sSpriteExplosionPlayer;
+    public static MusicFW sGameMusic;
+    public static SoundFW sHit;
+    public static SoundFW sExplode;
+    public static SoundFW sTouch;
 
 }

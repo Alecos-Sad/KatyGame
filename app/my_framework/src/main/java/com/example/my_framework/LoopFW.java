@@ -3,7 +3,6 @@ package com.example.my_framework;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -11,17 +10,14 @@ import java.util.Date;
 
 public class LoopFW extends SurfaceView implements Runnable {
 
-    private final float FPS = 60;
-    private final float SECOND = 1000000000;
-    private float UPDATE_TIME = SECOND / FPS;
     private boolean running = false;
 
     Thread gameThread = null;
-    CoreFW coreFW;
-    Bitmap frameBuffer;
-    SurfaceHolder surfaceHolder;
+    final CoreFW coreFW;
+    final Bitmap frameBuffer;
+    final SurfaceHolder surfaceHolder;
     Canvas canvas;
-    Rect rect;
+    final Rect rect;
 
     public LoopFW(CoreFW coreFW, Bitmap frameBuffer){
         super(coreFW);
@@ -45,9 +41,12 @@ public class LoopFW extends SurfaceView implements Runnable {
         float delta = 0;
         timer = System.currentTimeMillis();
         while (running) {
-            float notime = System.nanoTime();
-            float elapsedTime = notime - lastTime;
-            lastTime = notime;
+            float noTime = System.nanoTime();
+            float elapsedTime = noTime - lastTime;
+            lastTime = noTime;
+            float SECOND = 1000000000;
+            float FPS = 60;
+            float UPDATE_TIME = SECOND / FPS;
             delta += elapsedTime / UPDATE_TIME;
             if (delta > 1) {
                 updateGame();
@@ -56,7 +55,7 @@ public class LoopFW extends SurfaceView implements Runnable {
             }
             if (System.currentTimeMillis() - timer > 1000) {
                 Date date = new Date();
-                System.out.println("UPDATES = " + updates + " DRAWNING " + drawing
+                System.out.println("UPDATES = " + updates + " DRAWING " + drawing
                         + date);
                 updates = 0;
                 drawing = 0;

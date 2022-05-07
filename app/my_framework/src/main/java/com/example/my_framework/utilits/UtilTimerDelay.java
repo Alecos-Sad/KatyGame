@@ -14,9 +14,6 @@ public class UtilTimerDelay {
     public boolean timerDelay(double second) {
         nowTime = System.nanoTime() / SECOND;
         elapsedTime = nowTime - startTime;
-        if (elapsedTime > second) {
-            return true;
-        }
-        return false;
+        return elapsedTime > second;
     }
 }

@@ -12,11 +12,10 @@ import java.io.InputStream;
 
 public class GraphicsFW {
 
-    private AssetManager assetManagerGame;
-    private Bitmap frameBufferGame;
-    private Canvas canvasGame;
-    private Paint paintGame;
-    private Bitmap textureGame;
+    private final AssetManager assetManagerGame;
+    private final Bitmap frameBufferGame;
+    private final Canvas canvasGame;
+    private final Paint paintGame;
 
     public GraphicsFW(AssetManager assetManager, Bitmap frameBufferGame) {
         this.assetManagerGame = assetManager;
@@ -59,7 +58,8 @@ public class GraphicsFW {
     }
 
     public Bitmap newTexture(String fileName) {
-        InputStream inputStream = null;
+        InputStream inputStream;
+        Bitmap textureGame;
         try {
             inputStream = assetManagerGame.open(fileName);
             textureGame = BitmapFactory.decodeStream(inputStream);
@@ -79,8 +79,7 @@ public class GraphicsFW {
         return textureGame;
     }
 
-    public Bitmap newSprite(Bitmap tetureAtlas, int x, int y, int widthSprite, int heightSprite) {
-        Bitmap newSprite = Bitmap.createBitmap(tetureAtlas, x, y, widthSprite, heightSprite);
-        return newSprite;
+    public Bitmap newSprite(Bitmap textureAtlas, int x, int y, int widthSprite, int heightSprite) {
+        return Bitmap.createBitmap(textureAtlas, x, y, widthSprite, heightSprite);
     }
 }

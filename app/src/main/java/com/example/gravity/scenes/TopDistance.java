@@ -9,19 +9,19 @@ import com.example.my_framework.SceneFW;
 
 public class TopDistance extends SceneFW {
 
-    String[] numbers = new String[5];
+    private String[] mMumbers = new String[5];
 
 
     public TopDistance(CoreFW coreFW) {
         super(coreFW);
         for (int i = 0; i < 5; i++) {
-            this.numbers[i] = " " + (i + 1) + "." + SettingsGame.distance[i];
+            this.mMumbers[i] = " " + (i + 1) + "." + SettingsGame.mDistance[i];
         }
     }
 
     @Override
     public void update() {
-        if (coreFW.getTouchLictenerFW().getTouchUp(0, sceneHeight, sceneWidth, sceneHeight)) {
+        if (coreFW.getTouchListenerFW().getTouchUp(0, sceneHeight, sceneWidth, sceneHeight)) {
             coreFW.setScene(new MainMenuScene(coreFW));
         }
     }
@@ -29,11 +29,11 @@ public class TopDistance extends SceneFW {
     @Override
     public void drawing() {
         graphicsFW.drawText(coreFW.getString(R.string.txt_top_distance), 120, 200, Color.GREEN, 40, null);
-        graphicsFW.drawText(String.valueOf(numbers[0]), 120, 250, Color.GREEN, 35, null);
-        graphicsFW.drawText(String.valueOf(numbers[1]), 120, 300, Color.GREEN, 35, null);
-        graphicsFW.drawText(String.valueOf(numbers[2]), 120, 350, Color.GREEN, 35, null);
-        graphicsFW.drawText(String.valueOf(numbers[3]), 120, 400, Color.GREEN, 35, null);
-        graphicsFW.drawText(String.valueOf(numbers[4]), 120, 450, Color.GREEN, 35, null);
+        graphicsFW.drawText(String.valueOf(mMumbers[0]), 120, 250, Color.GREEN, 35, null);
+        graphicsFW.drawText(String.valueOf(mMumbers[1]), 120, 300, Color.GREEN, 35, null);
+        graphicsFW.drawText(String.valueOf(mMumbers[2]), 120, 350, Color.GREEN, 35, null);
+        graphicsFW.drawText(String.valueOf(mMumbers[3]), 120, 400, Color.GREEN, 35, null);
+        graphicsFW.drawText(String.valueOf(mMumbers[4]), 120, 450, Color.GREEN, 35, null);
     }
 
     @Override

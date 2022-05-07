@@ -2,20 +2,18 @@ package com.example.my_framework;
 
 import android.graphics.Bitmap;
 
-import com.example.my_framework.GraphicsFW;
-
 public class AnimationFW {
 
-    double speedAnimation;
+    final double speedAnimation;
     int delayIndex;
-    int coutFrames;
-    int frames;
+    int countFrames;
+    final int frames;
 
     Bitmap sprite;
-    Bitmap sprite1;
-    Bitmap sprite2;
-    Bitmap sprite3;
-    Bitmap sprite4;
+    final Bitmap sprite1;
+    final Bitmap sprite2;
+    final Bitmap sprite3;
+    final Bitmap sprite4;
 
     public AnimationFW(double speedAnimation,
                        Bitmap sprite1,
@@ -41,21 +39,21 @@ public class AnimationFW {
 
     private void nextFrame() {
 
-        if (coutFrames == 0) {
+        if (countFrames == 0) {
             sprite = sprite1;
         }
-        if (coutFrames == 1) {
+        if (countFrames == 1) {
             sprite = sprite2;
         }
-        if (coutFrames == 2) {
+        if (countFrames == 2) {
             sprite = sprite3;
         }
-        if (coutFrames == 3) {
+        if (countFrames == 3) {
             sprite = sprite4;
         }
-        coutFrames++;
-        if (coutFrames > frames) {
-            coutFrames = 0;
+        countFrames++;
+        if (countFrames > frames) {
+            countFrames = 0;
         }
     }
 

@@ -7,7 +7,7 @@ import com.example.my_framework.SceneFW;
 
 
 public class Main extends CoreFW {
-
+    //TODO Сделать отдельный поток для Loader loaderAssets AsyncTask
     public SceneFW getStartScene(){
         LoaderAssets loaderAssets = new LoaderAssets(this,this.getGraphicsFW());
         return new MainMenuScene(this);

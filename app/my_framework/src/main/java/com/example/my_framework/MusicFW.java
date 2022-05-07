@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class MusicFW implements MediaPlayer.OnCompletionListener {
 
-    MediaPlayer mediaPlayer;
-    boolean isPrepared = false;
+    final MediaPlayer mediaPlayer;
+    boolean isPrepared;
 
     public MusicFW(AssetFileDescriptor assetFileDescriptor) {
         mediaPlayer = new MediaPlayer();

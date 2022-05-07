@@ -6,35 +6,30 @@ import com.example.my_framework.GraphicsFW;
 import java.util.ArrayList;
 
 public class GeneratorEnemy {
-
-    private int maxScreenY;
-    private int maxScreenX;
-    private int minScreenY;
-    private int minScreenX;
-
+    private int mMaxScreenY;
+    private int mMaxScreenX;
+    private int mMinScreenY;
     public ArrayList<Enemy> enemyArrayList;
 
     public GeneratorEnemy(int sceneWidth, int sceneHeight, int minScreenY) {
-
-        this.maxScreenX = sceneWidth;
-        this.maxScreenY = sceneHeight;
-        this.minScreenY = minScreenY;
-        this.minScreenX = 0;
+        this.mMaxScreenX = sceneWidth;
+        this.mMaxScreenY = sceneHeight;
+        this.mMinScreenY = minScreenY;
         enemyArrayList = new ArrayList<>();
     }
 
     public void update(double speedPlayer) {
         if (enemyArrayList.size() < 3) {
-            addEnemy(speedPlayer, 3);
+            addEnemy( 3);
         }
         for (int i = 0; i < enemyArrayList.size(); i++) {
             enemyArrayList.get(i).update(speedPlayer);
         }
     }
 
-    private void addEnemy(double speedPlayaer, int ammoutEnemy) {
-        for (int i = 0; i < ammoutEnemy; i++) {
-            enemyArrayList.add(new Enemy(maxScreenX, maxScreenY, minScreenY, 1));
+    private void addEnemy(int amountEnemy) {
+        for (int i = 0; i < amountEnemy; i++) {
+            enemyArrayList.add(new Enemy(mMaxScreenX, mMaxScreenY, mMinScreenY, 1));
         }
     }
 

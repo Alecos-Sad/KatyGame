@@ -3,7 +3,7 @@ package com.example.my_framework;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class TouchLictenerFW implements View.OnTouchListener {
+public class TouchListenerFW implements View.OnTouchListener {
 
     float touchX;
     float touchY;
@@ -11,10 +11,10 @@ public class TouchLictenerFW implements View.OnTouchListener {
     boolean isTouchDown;
     boolean isTouchUp;
 
-    float sceneWith;
-    float sceneHeight;
+    final float sceneWith;
+    final float sceneHeight;
 
-    public TouchLictenerFW(View view, float sceneWith, float sceneHeight) {
+    public TouchListenerFW(View view, float sceneWith, float sceneHeight) {
         view.setOnTouchListener(this);
         this.sceneWith = sceneWith;
         this.sceneHeight = sceneHeight;

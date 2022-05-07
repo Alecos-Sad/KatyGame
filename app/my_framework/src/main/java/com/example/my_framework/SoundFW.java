@@ -3,8 +3,8 @@ package com.example.my_framework;
 import android.media.SoundPool;
 
 public class SoundFW {
-    int sound;
-    SoundPool soundPool;
+    final int sound;
+    final SoundPool soundPool;
 
     public SoundFW(int sound, SoundPool soundPool) {
         this.sound = sound;

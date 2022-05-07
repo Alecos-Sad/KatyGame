@@ -3,7 +3,6 @@ package com.example.gravity.scenes;
 import android.graphics.Color;
 
 import com.example.gravity.R;
-import com.example.gravity.generator.GeneratorBackground;
 import com.example.gravity.objects.GameManager;
 import com.example.gravity.utilits.SettingsGame;
 import com.example.gravity.utilits.UtilResourse;
@@ -13,7 +12,7 @@ import com.example.my_framework.SceneFW;
 public class GameScene extends SceneFW {
 
     enum GameState {
-        READY, RUNNING, PAUSE, GAMEOVER
+        READY, RUNNING, PAUSE, GAME_OVER
     }
 
     GameState gameState;
@@ -24,7 +23,7 @@ public class GameScene extends SceneFW {
         super(coreFW);
         gameState = GameState.READY;
         gameManager = new GameManager(coreFW, sceneWidth, sceneHeight);
-        UtilResourse.gameMusic.play(true, 0.5f);
+        UtilResourse.sGameMusic.play(true, 0.5f);
     }
 
     @Override
@@ -38,17 +37,17 @@ public class GameScene extends SceneFW {
         if (gameState == GameState.PAUSE) {
             updateStatePause();
         }
-        if (gameState == GameState.GAMEOVER) {
+        if (gameState == GameState.GAME_OVER) {
             updateStateGameOver();
         }
     }
 
     private void updateStateGameOver() {
         SettingsGame.addDistance(gameManager.getPassedDistance());
-        if (coreFW.getTouchLictenerFW().getTouchUp(250, 360, 100, 35)) {
+        if (coreFW.getTouchListenerFW().getTouchUp(250, 360, 100, 35)) {
             coreFW.setScene(new GameScene(coreFW));
         }
-        if (coreFW.getTouchLictenerFW().getTouchUp(250, 420, 100, 35)) {
+        if (coreFW.getTouchListenerFW().getTouchUp(250, 420, 100, 35)) {
             coreFW.setScene(new MainMenuScene(coreFW));
         }
     }
@@ -73,18 +72,18 @@ public class GameScene extends SceneFW {
     private void updateStateRunning() {
         gameManager.update();
         if (GameManager.gameOver) {
-            gameState = GameState.GAMEOVER;
+            gameState = GameState.GAME_OVER;
         }
 
     }
 
     private void drawingStateRunning() {
         graphicsFW.clearScene(Color.BLACK);
-        gameManager.drawing(coreFW, graphicsFW);
+        gameManager.drawing(graphicsFW);
     }
 
     private void updateStateReady() {
-        if (coreFW.getTouchLictenerFW().getTouchUp(0, sceneHeight, sceneWidth, sceneHeight)) {
+        if (coreFW.getTouchListenerFW().getTouchUp(0, sceneHeight, sceneWidth, sceneHeight)) {
             gameState = GameState.RUNNING;
         }
     }
@@ -107,7 +106,7 @@ public class GameScene extends SceneFW {
         if (gameState == GameState.PAUSE) {
             drawingStatePause();
         }
-        if (gameState == GameState.GAMEOVER) {
+        if (gameState == GameState.GAME_OVER) {
             drawingStateGameOver();
         }
     }
@@ -115,19 +114,19 @@ public class GameScene extends SceneFW {
 
     @Override
     public void pause() {
-        UtilResourse.gameMusic.stop();
+        UtilResourse.sGameMusic.stop();
     }
 
     @Override
     public void resume() {
-        UtilResourse.gameMusic.play(true, 1f);
+        UtilResourse.sGameMusic.play(true, 1f);
     }
 
     @Override
     public void dispose() {
-        UtilResourse.explode.dispose();
-        UtilResourse.hit.dispose();
-        UtilResourse.touch.dispose();
-        UtilResourse.gameMusic.dispose();
+        UtilResourse.sExplode.dispose();
+        UtilResourse.sHit.dispose();
+        UtilResourse.sTouch.dispose();
+        UtilResourse.sGameMusic.dispose();
     }
 }

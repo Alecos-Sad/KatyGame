@@ -6,12 +6,11 @@ public class UtilRandomFW {
 
     public static int getCasualNumber(int number) {
         Random random = new Random();
-        int casualNumber = random.nextInt(number);
-        return casualNumber;
+        return random.nextInt(number);
     }
 
     public static int getGap(int minNumber, int maxNumber) {
-        int gap = 0;
+        int gap;
         gap = (int) ((Math.random() * ++maxNumber) + minNumber);
         return gap;
     }
